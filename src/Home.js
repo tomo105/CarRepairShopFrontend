@@ -3,6 +3,7 @@ import { Button, Container } from "reactstrap";
 import { withCookies } from "react-cookie";
 
 import "./App.css";
+import {Link} from "react-router-dom";
 
 class Home extends Component {
 
@@ -63,6 +64,26 @@ class Home extends Component {
             <p>Please log in to Service Station App.</p>
         );
 
+        const manager = this.state.isManager ? (
+          <div>
+              <Button color="link">
+                  <Link to="/appointments">Make an appointment</Link>
+              </Button>
+          </div>
+        ) : (
+          <div />
+        );
+
+        const logistician = this.state.isLogistician ? (
+          <div>
+              <Button color="link">
+                  <Link to="/appointments">Make an appointment</Link>
+              </Button>
+          </div>
+        ) : (
+          <div />
+        );
+
         const button = this.state.isAuthenticated ? (
             <div>
                 <Button color="primary" onClick={this.logout}>
@@ -79,6 +100,8 @@ class Home extends Component {
             <div>
                 <Container fluid>
                     {message}
+                    {manager}
+                    {logistician}
                     {button}
                 </Container>
             </div>
