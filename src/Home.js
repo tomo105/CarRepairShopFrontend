@@ -69,6 +69,9 @@ class Home extends Component {
               <Button color="link">
                   <Link to="/appointments">Make an appointment</Link>
               </Button>
+              <Button color="link">
+                  <Link to="/cars">Car service app</Link>
+              </Button>
           </div>
         ) : (
           <div />
@@ -78,6 +81,9 @@ class Home extends Component {
           <div>
               <Button color="link">
                   <Link to="/appointments">Make an appointment</Link>
+              </Button>
+              <Button color="link">
+                  <Link to="/cars">Car service app</Link>
               </Button>
           </div>
         ) : (
