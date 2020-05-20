@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Button, Container, Table } from "reactstrap";
-//import AppNavbar from "./AppNavbar";
+import AppNavbar from "./AppNavbar";
 import { Link } from "react-router-dom";
 import Popup from "reactjs-popup";
 
@@ -530,7 +530,7 @@ class EmployeeList extends Component {
         } else res = <tbody>{allEmployees}</tbody>;
         return (
             <div>
-                {/*<AppNavbar />*/}
+                <AppNavbar />
                 <Container fluid>
                     <div className="float-right">
                         <Button color="info" onClick={this.managerClick.bind(this)}>

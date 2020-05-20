@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {Button, ButtonGroup, Container, Table} from "reactstrap";
 import {Link} from "react-router-dom";
+import AppNavbar from "./AppNavbar";
 
 export default class Appointment extends Component {
   constructor(props) {
@@ -78,6 +79,7 @@ export default class Appointment extends Component {
 
     return (
       <div>
+        <AppNavbar />
         <Container fluid>
           <div className="float-right">
             <Button color="success" tag={Link} to="/appointments/new">
