@@ -4,6 +4,7 @@ import { withCookies } from "react-cookie";
 
 import "./App.css";
 import {Link} from "react-router-dom";
+import AppNavbar from "./AppNavbar";
 
 class Home extends Component {
 
@@ -107,6 +108,7 @@ class Home extends Component {
 
         return (
             <div>
+                <AppNavbar />
                 <Container fluid>
                     {message}
                     {manager}

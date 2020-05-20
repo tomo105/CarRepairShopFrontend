@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Popup from "reactjs-popup";
 import { Button, ButtonGroup, Container, Table } from "reactstrap";
-// import AppNavbar from "./AppNavbar";
+import AppNavbar from "./AppNavbar";
 import { Link } from "react-router-dom";
 
 class CarList extends Component {
@@ -137,7 +137,7 @@ class CarList extends Component {
         });
         return (
             <div>
-                {/*<AppNavbar />*/}
+                <AppNavbar />
                 <Container fluid>
                     <div className="float-right">
                         <Button color="success" tag={Link} to="/cars/new">
