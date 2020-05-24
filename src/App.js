@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 import "./App.css";
 import Appointment from "./Appointment";
+import AppointmentEdit from "./AppointmentEdit";
 import CarList from "./CarList";
 import CarEdit from "./CarEdit";
 import EmployeeList from "./EmployeeList";
@@ -19,6 +20,7 @@ class App extends Component {
                 <Switch>
                     <Route path="/" exact={true} component={Home}/>
                     <Route path="/appointments" exact={true} component={Appointment}/>
+                    <Route path="/appointments/:id" component={AppointmentEdit} />
                     <Route path="/cars" exact={true} component={CarList}/>
                     <Route path="/cars/:id" component={CarEdit}/>
                     <Route path="/employees" exact={true} component={EmployeeList} />
