@@ -76,6 +76,9 @@ class Home extends Component {
               <Button color="link">
                   <Link to="/employees">Employees service app</Link>
               </Button>
+              <Button color="link">
+                  <Link to="/repairs">Repairs</Link>
+              </Button>
           </div>
         ) : (
           <div />
@@ -92,6 +95,16 @@ class Home extends Component {
           </div>
         ) : (
           <div />
+        );
+
+        const mechanic = this.state.isMechanic ? (
+            <div>
+                <Button color="link">
+                    <Link to="/repairs">Repairs</Link>
+                </Button>
+            </div>
+        ) : (
+            <div />
         );
 
         const button = this.state.isAuthenticated ? (
@@ -113,6 +126,7 @@ class Home extends Component {
                     {message}
                     {manager}
                     {logistician}
+                    {mechanic}
                     {button}
                 </Container>
             </div>
