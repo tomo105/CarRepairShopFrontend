@@ -66,12 +66,12 @@ class RepairsEdit extends Component {
                         <FormGroup>
                             <Label for="nameUser">User</Label>
                             <Input type="text" name="nameUser" id="nameUser" value={item.nameUser || ""}
-                                   onChange={this.handleChange} autoComplete="nameUser"/>
+                                   onChange={this.handleChange} autoComplete="nameUser" style={{width: "350px"}}/>
                         </FormGroup>
                         <FormGroup>
                             <Label for="numberCar">Registration number</Label>
                             <Input type="text" name="numberCar" id="numberCar" value={item.numberCar || ""}
-                                   onChange={this.handleChange} autoComplete="numberCar"/>
+                                   onChange={this.handleChange} autoComplete="numberCar" style={{width: "350px"}}/>
                         </FormGroup>
                         <FormGroup>
                             <Label for="data">Data</Label>
@@ -81,16 +81,16 @@ class RepairsEdit extends Component {
                         <FormGroup>
                             <Label for="sparesCosts">Spares Costs</Label>
                             <Input type="value" name="sparesCosts" id="sparesCosts" value={item.sparesCosts || ""}
-                                onChange={this.handleChange} autoComplete="sparesCosts"/>
+                                onChange={this.handleChange} autoComplete="sparesCosts" style={{width: "350px"}}/>
                         </FormGroup>
                         <FormGroup>
                             <Label for="serviceCosts">Service Costs</Label>
                             <Input type="value" name="serviceCosts" id="serviceCosts" value={item.serviceCosts || ""}
-                                onChange={this.handleChange} autoComplete="serviceCosts"/>
+                                onChange={this.handleChange} autoComplete="serviceCosts" style={{width: "350px"}}/>
                         </FormGroup>
                         <FormGroup>
                             <Label for="note">Note</Label>
-                            <Input type="value" name="note" id="note" value={item.note || ""}
+                            <Input type="text" name="note" id="note" value={item.note || ""}
                                 onChange={this.handleChange} autoComplete="note"/>
                         </FormGroup>
                         <FormGroup>
