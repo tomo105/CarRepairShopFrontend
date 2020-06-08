@@ -68,86 +68,43 @@ class EmployeeEdit extends Component {
         return (
             <div>
                 <AppNavbar />
-                <Container>
+                <Container >
                     {title}
                     <Form onSubmit={this.handleSubmit}>
                         <FormGroup>
                             <Label for="name">Name</Label>
-                            <Input
-                                type="text"
-                                name="name"
-                                id="name"
-                                value={item.name || ""}
-                                onChange={this.handleChange}
-                                autoComplete="name"
-                            />
+                            <Input type="text" name="name" id="name" value={item.name || ""}
+                                onChange={this.handleChange} autoComplete="name" style={{width: "350px"}}/>
                         </FormGroup>
                         <FormGroup>
                             <Label for="surname">Surname</Label>
-                            <Input
-                                type="text"
-                                name="surname"
-                                id="surname"
-                                value={item.surname || ""}
-                                onChange={this.handleChange}
-                                autoComplete="surname"
-                            />
+                            <Input type="text" name="surname" id="surname" value={item.surname || ""}
+                                onChange={this.handleChange} autoComplete="surname" style={{width: "350px"}}/>
                         </FormGroup>
                         <FormGroup>
                             <Label for="setRole">Role</Label>
-                            <Combobox
-                                type="text"
-                                name="setRole"
-                                id="setRole"
-                                data={roles}
-                                defaultValue={"Mechanic"}
-                                onBlur={this.handleChange}
-                                autoComplete="setRole"
-                            />
+                            <Combobox type="text" name="setRole" id="setRole" data={roles} defaultValue={"Mechanic"}
+                                onBlur={this.handleChange} autoComplete="setRole" style={{width: "350px"}}/>
                         </FormGroup>
                         <FormGroup>
                             <Label for="experience">Experience</Label>
-                            <Input
-                                type="value"
-                                name="experience"
-                                id="experience"
-                                value={item.experience || ""}
-                                onChange={this.handleChange}
-                                autoComplete="experience"
-                            />
+                            <Input type="value" name="experience" id="experience" value={item.experience || ""}
+                                onChange={this.handleChange} autoComplete="experience" style={{width: "350px"}}/>
                         </FormGroup>
                         <FormGroup>
                             <Label for="experienceInCompany">Experience in company</Label>
-                            <Input
-                                type="value"
-                                name="experienceInCompany"
-                                id="experienceInCompany"
-                                value={item.experienceInCompany || ""}
-                                onChange={this.handleChange}
-                                autoComplete="experienceInCompany"
-                            />
+                            <Input type="value" name="experienceInCompany" id="experienceInCompany" value={item.experienceInCompany || ""}
+                                onChange={this.handleChange} autoComplete="experienceInCompany" style={{width: "350px"}}/>
                         </FormGroup>
                         <FormGroup>
                             <Label for="login">Login</Label>
-                            <Input
-                                type="text"
-                                name="login"
-                                id="login"
-                                value={item.login || ""}
-                                onChange={this.handleChange}
-                                autoComplete="login"
-                            />
+                            <Input type="text" name="login" id="login" value={item.login || ""}
+                                onChange={this.handleChange} autoComplete="login" style={{width: "350px"}}/>
                         </FormGroup>
                         <FormGroup>
                             <Label for="password">Password</Label>
-                            <Input
-                                type="password"
-                                name="password"
-                                id="password"
-                                value={item.password || ""}
-                                onChange={this.handleChange}
-                                autoComplete="password"
-                            />
+                            <Input type="password" name="password" id="password" value={item.password || ""}
+                                onChange={this.handleChange} autoComplete="password" style={{width: "350px"}}/>
                         </FormGroup>
                         <FormGroup>
                             <Button color="primary" type="submit">
