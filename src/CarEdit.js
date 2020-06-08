@@ -87,7 +87,7 @@ class GroupEdit extends Component {
                                 onChange={this.handleChange} autoComplete="phoneNumber" style={{width: "350px"}}/>
                         </FormGroup>
                         <FormGroup>
-                            <Label for="client">Client</Label>
+                            <Label for="client">Client name</Label>
                             <Input type="text" name="client" id="client" value={item.client || ""}
                                 onChange={this.handleChange} autoComplete="client" style={{width: "350px"}}/>
                         </FormGroup>

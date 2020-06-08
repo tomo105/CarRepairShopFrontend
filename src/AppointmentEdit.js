@@ -65,25 +65,13 @@ class AppointmentEdit extends Component {
           <Form onSubmit={this.handleSubmit}>
             <FormGroup>
               <Label for="nameUser">User</Label>
-              <Input
-                type="text"
-                name="nameUser"
-                id="nameUser"
-                value={item.nameUser || ""}
-                onChange={this.handleChange}
-                autoComplete="nameUser"
-              />
+              <Input type="text" name="nameUser" id="nameUser" value={item.nameUser || ""}
+                onChange={this.handleChange} autoComplete="nameUser"/>
             </FormGroup>
             <FormGroup>
-              <Label for="numberCar">Number of Car</Label>
-              <Input
-                type="text"
-                name="numberCar"
-                id="numberCar"
-                value={item.numberCar || ""}
-                onChange={this.handleChange}
-                autoComplete="numberCar"
-              />
+              <Label for="numberCar">Registration number</Label>
+              <Input type="text" name="numberCar" id="numberCar" value={item.numberCar || ""}
+                onChange={this.handleChange} autoComplete="numberCar"/>
             </FormGroup>
             <FormGroup>
               <Label for="data">Data</Label>
@@ -92,14 +80,8 @@ class AppointmentEdit extends Component {
             </FormGroup>
             <FormGroup>
               <Label for="description">Description</Label>
-              <Input
-                type="value"
-                name="description"
-                id="description"
-                value={item.description || ""}
-                onChange={this.handleChange}
-                autoComplete="description"
-              />
+              <Input type="value" name="description" id="description" value={item.description || ""}
+                onChange={this.handleChange} autoComplete="description"/>
             </FormGroup>
             <FormGroup>
               <Button color="primary" type="submit">

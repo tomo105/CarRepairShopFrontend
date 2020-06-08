@@ -42,22 +42,6 @@ class EmployeeList extends Component {
             .then(dataAppointments =>
                 this.setState({ appointments: dataAppointments })
             );
-
-        // fetch("api/employees/mechanics")
-        //   .then(response => response.json())
-        //   .then(data => this.setState({ mechanics: data }));
-
-        // fetch("api/employees/managers")
-        //   .then(response => response.json())
-        //   .then(dataManager => this.setState({ managers: dataManager }));
-
-        // fetch("api/employees/logisticians")
-        //   .then(response => response.json())
-        //   .then(data => this.setState({ logisticians: data }));
-
-        // fetch("api/employees/accountants")
-        //   .then(response => response.json())
-        //   .then(data => this.setState({ accountants: data, isLoading: false }));
     }
     render() {
         const { employees, appointments, isLoading } = this.state;
@@ -81,36 +65,24 @@ class EmployeeList extends Component {
                 if (appointment.nameUser === employee.surname) {
                     if (d >= dateToFormat && d <= weekStamp) {
                         appointmentWeekly +=
-                            appointment.description +
-                            " " +
-                            appointment.data +
-                            " " +
-                            appointment.numberCar +
-                            " " +
-                            appointment.nameUser +
-                            " ";
+                            appointment.description + " "
+                            + appointment.data + " "
+                            + appointment.numberCar + " "
+                            + appointment.nameUser + " ";
                     }
                     if (d >= dateToFormat && d <= monthStamp) {
                         appointmentMonthly +=
-                            appointment.description +
-                            " " +
-                            appointment.data +
-                            " " +
-                            appointment.numberCar +
-                            " " +
-                            appointment.nameUser +
-                            " ";
+                            appointment.description + " "
+                            + appointment.data + " "
+                            + appointment.numberCar + " "
+                            + appointment.nameUser + " ";
                     }
                     if (d >= dateToFormat && d <= yearStamp) {
                         appointmentAnnual +=
-                            appointment.description +
-                            " " +
-                            appointment.data +
-                            " " +
-                            appointment.numberCar +
-                            " " +
-                            appointment.nameUser +
-                            " ";
+                            appointment.description + " "
+                            + appointment.data + " "
+                            + appointment.numberCar + " "
+                            + appointment.nameUser + " ";
                     }
                 }
                 return appointmentInformation;
@@ -144,14 +116,11 @@ class EmployeeList extends Component {
                                         <div className="textFrame">{appointmentWeekly}</div>
                                     </div>
                                     <div className="actions">
-                                        <Button
-                                            className="button"
-                                            onClick={() => {
+                                        <Button className="button" onClick={() => {
                                                 console.log("popup windows closed ");
                                                 close();
-                                            }}
-                                        >
-                                            Close popup window
+                                            }
+                                        }>Close popup window
                                         </Button>
                                     </div>
                                 </div>
@@ -180,14 +149,11 @@ class EmployeeList extends Component {
                                         <div className="textFrame">{appointmentMonthly}</div>
                                     </div>
                                     <div className="actions">
-                                        <Button
-                                            className="button"
-                                            onClick={() => {
+                                        <Button className="button" onClick={() => {
                                                 console.log("popup windows closed ");
                                                 close();
-                                            }}
-                                        >
-                                            Close popup window
+                                            }
+                                        }> Close popup window
                                         </Button>
                                     </div>
                                 </div>
@@ -214,53 +180,6 @@ class EmployeeList extends Component {
                                         {" "}
                                         <h1>Appointment information</h1>
                                         <div className="textFrame">{appointmentAnnual}</div>
-                                    </div>
-                                    <div className="actions">
-                                        <Button
-                                            className="button"
-                                            onClick={() => {
-                                                console.log("popup windows closed ");
-                                                close();
-                                            }}
-                                        >
-                                            Close popup window
-                                        </Button>
-                                    </div>
-                                </div>
-                            )}
-                        </Popup>
-                    </td>
-                    <td>
-                        {" "}
-                        <Popup
-                            trigger={
-                                <Button color="info" className="button">
-                                    {" "}
-                                    Show Information{" "}
-                                </Button>
-                            }
-                            modal
-                        >
-                            {close => (
-                                <div className="carPopup">
-                                    <a className="close" onClick={close}>
-                                        &times;
-                                    </a>
-                                    <div className="header"> Employee Information </div>
-                                    <div className="content">
-                                        {" "}
-                                        <h1>Name</h1>
-                                        <div className="textFrame">{employee.name}</div>
-                                        <h1>Surname</h1>
-                                        <div className="textFrame">{employee.surname}</div>
-                                        <h1>Experience</h1>
-                                        <div className="textFrame">{employee.experience}</div>
-                                        <h1>ExperienceInCompany</h1>
-                                        <div className="textFrame">
-                                            {employee.experienceInCompany}
-                                        </div>
-                                        <h1>Role</h1>
-                                        <div className="textFrame">{employee.role}</div>
                                     </div>
                                     <div className="actions">
                                         <Button
@@ -479,7 +398,7 @@ class EmployeeList extends Component {
                                             <div className="textFrame">{employee.surname}</div>
                                             <h1>Experience</h1>
                                             <div className="textFrame">{employee.experience}</div>
-                                            <h1>ExperienceInCompany</h1>
+                                            <h1>Experience in company</h1>
                                             <div className="textFrame">
                                                 {employee.experienceInCompany}
                                             </div>
@@ -549,15 +468,15 @@ class EmployeeList extends Component {
                             Add Employee
                         </Button>
                     </div>
-                    <h3>Employees service cars app</h3>
+                    <h3>Employees</h3>
                     <table className="mt-4" class="table table-hover">
                         <thead>
                         <tr>
                             <th width="25%">Name</th>
                             <th width="25%">Surname</th>
-                            <th width="20%">experience</th>
-                            <th width="20%">experienceInCompany</th>
-                            <th width="10%">role</th>
+                            <th width="20%">Experience</th>
+                            <th width="20%">Experience in company</th>
+                            <th width="10%">Role</th>
                         </tr>
                         </thead>
                         {res}

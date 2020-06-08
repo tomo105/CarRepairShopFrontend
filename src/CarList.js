@@ -144,14 +144,14 @@ class CarList extends Component {
                             Add Car
                         </Button>
                     </div>
-                    <h3>Service cars app</h3>
+                    <h3>Cars service</h3>
                     <table className="mt-4" class="table table-hover">
                         <thead>
                         <tr>
                             <th width="17.5%">Model</th>
                             <th width="17.5%">Brand</th>
                             <th>Registration Number</th>
-                            <th width="12.5%">Naprawa/Uszkodzenia</th>
+                            <th width="12.5%">Repairs/Damages</th>
                             <th width="10%">Phone Number</th>
                             <th width="10%">Client</th>
                             <th width="10%">Actions</th>
