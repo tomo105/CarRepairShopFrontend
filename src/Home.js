@@ -3,7 +3,6 @@ import { Button, Container } from "reactstrap";
 import { withCookies } from "react-cookie";
 
 import "./App.css";
-import {Link} from "react-router-dom";
 import AppNavbar from "./AppNavbar";
 
 class Home extends Component {
@@ -50,7 +49,7 @@ class Home extends Component {
         if (port === ":3000") {
             port = ":8080";
         }
-        window.location.href = "//" + window.location.hostname + port + "/";
+        window.location.href = "//" + window.location.hostname + port + "/login";
     }
 
     logout() {
@@ -62,74 +61,145 @@ class Home extends Component {
         const message = this.state.user ? (
             <h2>Welcome, {this.state.user.name} {this.state.user.surname}!</h2>
         ) : (
-            <p>Please log in to Service Station App.</p>
+          <h2>Welcome</h2>
+        );
+        const loginMessage = (
+            <h3>Please log in to Service Station App.</h3>
         );
 
         const manager = this.state.isManager ? (
           <div>
-              <Button color="link">
-                  <Link to="/appointments">Make an appointment</Link>
-              </Button>
-              <Button color="link">
-                  <Link to="/cars">Car service app</Link>
-              </Button>
-              <Button color="link">
-                  <Link to="/employees">Employees service app</Link>
-              </Button>
-              <Button color="link">
-                  <Link to="/repairs">Repairs</Link>
-              </Button>
+            <Button
+              href="/appointments"
+              color="outline-primary"
+              style={{
+                margin: "10px",
+                marginLeft: "0px"
+              }}>
+              Appointments
+            </Button>
+            {' '}
+
+            <Button
+              href="/cars"
+              color="outline-primary"
+              style={{
+                margin: "10px",
+              }}>
+              Car list
+            </Button>
+            {' '}
+
+            <Button
+              href="/employees"
+              color="outline-primary"
+              style={{
+                margin: "10px",
+              }}>
+              Employees
+            </Button>
+            {' '}
+
+            <Button
+              href="/repairs"
+              color="outline-primary"
+              style={{
+                margin: "10px",
+              }}>
+              Repairs
+            </Button>
+            {' '}
+
           </div>
         ) : (
-          <div />
+          <div/>
         );
 
         const logistician = this.state.isLogistician ? (
           <div>
-              <Button color="link">
-                  <Link to="/appointments">Make an appointment</Link>
-              </Button>
-              <Button color="link">
-                  <Link to="/cars">Car service app</Link>
-              </Button>
+            <Button
+              href="/appointments"
+              color="outline-primary"
+              style={{
+                margin: "10px",
+                marginLeft: "0px"
+              }}>
+              Appointments
+            </Button>
+            <Button
+              href="/cars"
+              color="outline-primary"
+              style={{
+                margin: "10px",
+              }}>
+              Car list
+            </Button>
           </div>
         ) : (
           <div />
         );
 
         const mechanic = this.state.isMechanic ? (
-            <div>
-                <Button color="link">
-                    <Link to="/repairs">Repairs</Link>
-                </Button>
-            </div>
+          <div>
+            <Button
+              href="/repairs"
+              color="outline-primary"
+              style={{
+                margin: "10px",
+                marginLeft: "0px"
+              }}>
+              Repairs
+            </Button>
+          </div>
         ) : (
             <div />
         );
 
-        const button = this.state.isAuthenticated ? (
+        const logoutButton = (
             <div>
-                <Button color="primary" onClick={this.logout}>
+                <Button
+                  color="primary"
+                  onClick={this.logout}
+                  style={{
+                    margin: "10px",
+                    marginLeft: "0px"
+                  }}>
                     Logout
                 </Button>
             </div>
-        ) : (
-            <Button color="primary" onClick={this.login}>
+        );
+
+        const loginButton = (
+            <Button
+              color="primary"
+              onClick={this.login}
+              style={{
+                margin: "10px",
+                marginLeft: "0px"
+              }}>
                 Login
             </Button>
         );
 
-        return (
-            <div>
-                <AppNavbar />
-                <Container fluid>
-                    {message}
-                    {manager}
-                    {logistician}
-                    {mechanic}
-                    {button}
-                </Container>
-            </div>
+        return this.state.isAuthenticated ? (
+          <div>
+            <AppNavbar />
+            <Container fluid>
+              {welcomeMessage}
+              {manager}
+              {logistician}
+              {mechanic}
+              {logoutButton}
+            </Container>
+          </div>
+        ) : (
+          <div>
+            <AppNavbar />
+            <Container fluid>
+              {loginMessage}
+              {loginButton}
+            </Container>
+          </div>
         );
     }
 }
