@@ -87,7 +87,7 @@ export default class Appointment extends Component {
             </Button>
           </div>
           <h3>Appointment panel</h3>
-          <Table className="mt-4">
+          <table className="mt-4" class="table table-hover">
             <thead>
             <tr>
               <th width="17.5%">User</th>
@@ -99,7 +99,7 @@ export default class Appointment extends Component {
             </tr>
             </thead>
             <tbody>{appointmentList}</tbody>
-          </Table>
+          </table>
         </Container>
       </div>
     );

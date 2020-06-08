@@ -75,7 +75,7 @@ class Repairs extends Component {
                         </Button>
                     </div>
                     <h3>Repair panel</h3>
-                    <Table className="mt-4">
+                    <table className="mt-4" class="table table-hover">
                         <thead>
                         <tr>
                             <th width="15%">User</th>
@@ -87,7 +87,7 @@ class Repairs extends Component {
                         </tr>
                         </thead>
                         <tbody>{repairList}</tbody>
-                    </Table>
+                    </table>
                 </Container>
             </div>
         );

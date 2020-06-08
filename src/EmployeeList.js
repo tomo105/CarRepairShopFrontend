@@ -550,7 +550,7 @@ class EmployeeList extends Component {
                         </Button>
                     </div>
                     <h3>Employees service cars app</h3>
-                    <Table className="mt-4">
+                    <table className="mt-4" class="table table-hover">
                         <thead>
                         <tr>
                             <th width="25%">Name</th>
@@ -561,7 +561,7 @@ class EmployeeList extends Component {
                         </tr>
                         </thead>
                         {res}
-                    </Table>
+                    </table>
                 </Container>
             </div>
         );

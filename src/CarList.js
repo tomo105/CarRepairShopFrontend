@@ -145,7 +145,7 @@ class CarList extends Component {
                         </Button>
                     </div>
                     <h3>Service cars app</h3>
-                    <Table className="mt-4">
+                    <table className="mt-4" class="table table-hover">
                         <thead>
                         <tr>
                             <th width="17.5%">Model</th>
@@ -158,7 +158,7 @@ class CarList extends Component {
                         </tr>
                         </thead>
                         <tbody>{carList}</tbody>
-                    </Table>
+                    </table>
                 </Container>
             </div>
         );
