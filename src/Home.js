@@ -58,7 +58,7 @@ class Home extends Component {
     }
 
     render() {
-        const message = this.state.user ? (
+        const welcomeMessage = this.state.user ? (
             <h2>Welcome, {this.state.user.name} {this.state.user.surname}!</h2>
         ) : (
           <h2>Welcome</h2>
