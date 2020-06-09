@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Container, Table } from "reactstrap";
+import { Button, Container } from "reactstrap";
 import AppNavbar from "./AppNavbar";
 import { Link } from "react-router-dom";
 import Popup from "reactjs-popup";
@@ -55,11 +55,8 @@ class EmployeeList extends Component {
         var monthStamp = new Date().getTime() + 30 * 24 * 60 * 60 * 1000;
         var yearStamp = new Date().getTime() + 365 * 24 * 60 * 60 * 1000;
 
-        const allEmployees = employees.map(employee => {
-            let appointmentWeekly = "";
-            let appointmentMonthly = "";
-            let appointmentAnnual = "";
-            const appointmentNote = appointments.map(appointment => {
+        function appointmentsMap(employee, appointmentWeekly, appointmentMonthly, appointmentAnnual) {
+            appointments.map(appointment => {
                 let appointmentInformation = "";
                 let d = new Date(appointment.data);
                 if (appointment.nameUser === employee.surname) {
@@ -87,6 +84,17 @@ class EmployeeList extends Component {
                 }
                 return appointmentInformation;
             });
+            return {appointmentWeekly, appointmentMonthly, appointmentAnnual};
+        }
+
+        const allEmployees = employees.map(employee => {
+            let appointmentWeekly = "";
+            let appointmentMonthly = "";
+            let appointmentAnnual = "";
+            const __ret = appointmentsMap(employee, appointmentWeekly, appointmentMonthly, appointmentAnnual);
+            appointmentWeekly = __ret.appointmentWeekly;
+            appointmentMonthly = __ret.appointmentMonthly;
+            appointmentAnnual = __ret.appointmentAnnual;
             return (
                 <tr key={employee.id}>
                     <td style={{ whiteSpace: "nowrap" }}>{employee.name}</td>
@@ -106,13 +114,9 @@ class EmployeeList extends Component {
                         >
                             {close => (
                                 <div className="carPopup">
-                                    <a className="close" onClick={close}>
-                                        &times;
-                                    </a>
-                                    <div className="header"> Weekly Schedule </div>
                                     <div className="content">
                                         {" "}
-                                        <h1>Appointment information</h1>
+                                        <h1>Weekly Schedule</h1>
                                         <div className="textFrame">{appointmentWeekly}</div>
                                     </div>
                                     <div className="actions">
@@ -139,13 +143,9 @@ class EmployeeList extends Component {
                         >
                             {close => (
                                 <div className="carPopup">
-                                    <a className="close" onClick={close}>
-                                        &times;
-                                    </a>
-                                    <div className="header"> Monthly Schedule </div>
                                     <div className="content">
                                         {" "}
-                                        <h1>Appointment information</h1>
+                                        <h1>Monthly Schedule</h1>
                                         <div className="textFrame">{appointmentMonthly}</div>
                                     </div>
                                     <div className="actions">
@@ -172,13 +172,9 @@ class EmployeeList extends Component {
                         >
                             {close => (
                                 <div className="carPopup">
-                                    <a className="close" onClick={close}>
-                                        &times;
-                                    </a>
-                                    <div className="header"> Annual Schedule </div>
                                     <div className="content">
                                         {" "}
-                                        <h1>Appointment information</h1>
+                                        <h1>Annual Schedule</h1>
                                         <div className="textFrame">{appointmentAnnual}</div>
                                     </div>
                                     <div className="actions">
@@ -214,50 +210,8 @@ class EmployeeList extends Component {
             let appointmentWeekly = "";
             let appointmentMonthly = "";
             let appointmentAnnual = "";
-            if (
-                (this.state.whichOne !== null) &
-                (employee.setRole === this.state.whichOne))
-            {
-                const appointmentNote = appointments.map(appointment => {
-                    let appointmentInformation = "";
-                    let d = new Date(appointment.data);
-                    if (appointment.nameUser === employee.surname) {
-                        if (d >= dateToFormat && d <= weekStamp) {
-                            appointmentWeekly +=
-                                appointment.description +
-                                " " +
-                                appointment.data +
-                                " " +
-                                appointment.numberCar +
-                                " " +
-                                appointment.nameUser +
-                                " ";
-                        }
-                        if (d >= dateToFormat && d <= monthStamp) {
-                            appointmentMonthly +=
-                                appointment.description +
-                                " " +
-                                appointment.data +
-                                " " +
-                                appointment.numberCar +
-                                " " +
-                                appointment.nameUser +
-                                " ";
-                        }
-                        if (d >= dateToFormat && d <= yearStamp) {
-                            appointmentAnnual +=
-                                appointment.description +
-                                " " +
-                                appointment.data +
-                                " " +
-                                appointment.numberCar +
-                                " " +
-                                appointment.nameUser +
-                                " ";
-                        }
-                    }
-                    return appointmentInformation;
-                });
+            if (this.state.whichOne !== null && employee.setRole === this.state.whichOne) {
+                appointmentsMap(employee, appointmentWeekly, appointmentMonthly, appointmentAnnual);
                 return (
                     <tr key={employee.id}>
                         <td style={{whiteSpace: "nowrap"}}>{employee.name}</td>
@@ -277,9 +231,6 @@ class EmployeeList extends Component {
                             >
                                 {close => (
                                     <div className="carPopup">
-                                        <a className="close" onClick={close}>
-                                            &times;
-                                        </a>
                                         <div className="header"> Weekly Schedule </div>
                                         <div className="content">
                                             {" "}
@@ -313,9 +264,6 @@ class EmployeeList extends Component {
                             >
                                 {close => (
                                     <div className="carPopup">
-                                        <a className="close" onClick={close}>
-                                            &times;
-                                        </a>
                                         <div className="header"> Monthly Schedule </div>
                                         <div className="content">
                                             {" "}
@@ -349,9 +297,6 @@ class EmployeeList extends Component {
                             >
                                 {close => (
                                     <div className="carPopup">
-                                        <a className="close" onClick={close}>
-                                            &times;
-                                        </a>
                                         <div className="header"> Annual Schedule </div>
                                         <div className="content">
                                             {" "}
@@ -386,9 +331,6 @@ class EmployeeList extends Component {
                             >
                                 {close => (
                                     <div className="carPopup">
-                                        <a className="close" onClick={close}>
-                                            &times;
-                                        </a>
                                         <div className="header"> Employee Information </div>
                                         <div className="content">
                                             {" "}
@@ -433,6 +375,7 @@ class EmployeeList extends Component {
                     </tr>
                 );
             }
+            return <div/>
         });
 
 
@@ -469,7 +412,7 @@ class EmployeeList extends Component {
                         </Button>
                     </div>
                     <h3>Employees</h3>
-                    <table className="mt-4" class="table table-hover">
+                    <table className="mt-4 table table-hover">
                         <thead>
                         <tr>
                             <th width="25%">Name</th>

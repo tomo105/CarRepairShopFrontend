@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Button, ButtonGroup, Container, Table} from "reactstrap";
+import {Button, ButtonGroup, Container} from "reactstrap";
 import {Link} from "react-router-dom";
 import AppNavbar from "./AppNavbar";
 
@@ -87,7 +87,7 @@ export default class Appointment extends Component {
             </Button>
           </div>
           <h3>Appointment panel</h3>
-          <table className="mt-4" class="table table-hover">
+          <table className="mt-4 table table-hover">
             <thead>
             <tr>
               <th width="17.5%">User</th>
