@@ -118,25 +118,13 @@ class AppointmentEdit extends Component {
             </FormGroup>
             <FormGroup>
               <Label for="data">Data</Label>
-              <Input
-                type="text"
-                name="data"
-                id="data"
-                value={item.data || ""}
-                onChange={this.handleChange}
-                autoComplete="data"
-              />
+              <Input type="date" name="data" id="data" value={item.data || ""}
+                onChange={this.handleChange} autoComplete="data"/>
             </FormGroup>
             <FormGroup>
               <Label for="description">Description</Label>
-              <Input
-                type="value"
-                name="description"
-                id="description"
-                value={item.description || ""}
-                onChange={this.handleChange}
-                autoComplete="description"
-              />
+              <Input type="value" name="description" id="description" value={item.description || ""}
+                onChange={this.handleChange} autoComplete="description"/>
             </FormGroup>
             <FormGroup>
               <Button color="primary" type="submit">
