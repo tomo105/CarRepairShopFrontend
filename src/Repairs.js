@@ -1,5 +1,5 @@
 import AppNavbar from "./AppNavbar";
-import { Button, ButtonGroup, Container, Table } from "reactstrap";
+import { Button, ButtonGroup, Container } from "reactstrap";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
@@ -38,31 +38,30 @@ class Repairs extends Component {
     }
 
     render() {
-        const { user, repairs, isLoading } = this.state;
+        const { repairs, isLoading } = this.state;
         if (isLoading) {
             return <p>Loading...</p>;
         }
 
         const repairList = repairs.map(repair => {
-            if (user != null && user.surname === repair.nameUser);
-                return (
-                    <tr key={repair.id}>
-                        <td style={{ whiteSpace: "nowrap" }}>{repair.nameUser}</td>
-                        <td>{repair.numberCar}</td>
-                        <td>{repair.data}</td>
-                        <td>{repair.sparesCosts}</td>
-                        <td>{repair.serviceCosts}</td>
-                        <td>{repair.note}</td>
-                        <td>
-                            <ButtonGroup>
-                                <Button size="sm" color="primary" tag={Link}
-                                        to={"/repairs/" + repair.id}>Edit</Button>
-                                <Button size="sm" color="danger"
-                                        onClick={() => this.remove(repair.id)}>Delete</Button>
-                            </ButtonGroup>
-                        </td>
-                    </tr>
-                );
+            return (
+                <tr key={repair.id}>
+                    <td style={{ whiteSpace: "nowrap" }}>{repair.nameUser}</td>
+                    <td>{repair.numberCar}</td>
+                    <td>{repair.data}</td>
+                    <td>{repair.sparesCosts}</td>
+                    <td>{repair.serviceCosts}</td>
+                    <td>{repair.note}</td>
+                    <td>
+                        <ButtonGroup>
+                            <Button size="sm" color="primary" tag={Link}
+                                    to={"/repairs/" + repair.id}>Edit</Button>
+                            <Button size="sm" color="danger"
+                                    onClick={() => this.remove(repair.id)}>Delete</Button>
+                        </ButtonGroup>
+                    </td>
+                </tr>
+            );
         });
 
         return (
@@ -75,7 +74,7 @@ class Repairs extends Component {
                         </Button>
                     </div>
                     <h3>Repair panel</h3>
-                    <table className="mt-4" class="table table-hover">
+                    <table className="mt-4 table table-hover">
                         <thead>
                         <tr>
                             <th width="15%">User</th>
