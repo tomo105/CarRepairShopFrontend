@@ -175,7 +175,7 @@ class CarList extends Component {
                             <th>Registration Number</th>
                             <th width="12.5%">Repairs/Damages</th>
                             <th width="10%">Phone Number</th>
-                            <th width="10%">Client</th>
+                            <th width="10%">Client name</th>
                             <th width="10%">Actions</th>
                         </tr>
                         </thead>
