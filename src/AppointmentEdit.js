@@ -109,7 +109,7 @@ class AppointmentEdit extends Component {
             <div className="form-row">
               <div className="form-group col-md-4">
                 <FormGroup>
-                  <Label for="nameUser">User</Label>
+                  <Label for="nameUser">Employee</Label>
                   <Combobox className="input" type="text" name="nameUser" id="nameUser" data={usersList}
                             onChange={this.usernameChange} defaultValue={ item.nameUser || "" }/>
                 </FormGroup>

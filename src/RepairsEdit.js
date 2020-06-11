@@ -116,7 +116,7 @@ class RepairsEdit extends Component {
                     <Form onSubmit={this.handleSubmit}>
                         <div className="form-row">
                             <div className="form-group col-md-4">
-                                <Label for="nameUser">User</Label>
+                                <Label for="nameUser">Employee</Label>
                                 <FormGroup>
                                     <Combobox className="input" type="text" name="nameUser" id="nameUser" data={usersList}
                                            onChange={this.usernameChange} defaultValue={ item.nameUser || "" }/>
