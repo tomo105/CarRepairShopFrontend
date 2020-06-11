@@ -66,39 +66,58 @@ class GroupEdit extends Component {
                 <Container>
                     {title}
                     <Form onSubmit={this.handleSubmit}>
-                        <FormGroup>
-                            <Label for="model">Model</Label>
-                            <Input type="text" name="model" id="model" value={item.model || ""}
-                                onChange={this.handleChange} autoComplete="model" style={{width: "350px"}}/>
-                        </FormGroup>
-                        <FormGroup>
-                            <Label for="brand">Brand</Label>
-                            <Input type="text" name="brand" id="brand" value={item.brand || ""}
-                                onChange={this.handleChange} autoComplete="brand-level1" style={{width: "350px"}}/>
-                        </FormGroup>
-                        <FormGroup>
-                            <Label for="registrationNumber">Registration Number</Label>
-                            <Input type="text" name="registrationNumber" id="registrationNumber" value={item.registrationNumber || ""}
-                                onChange={this.handleChange} autoComplete="registrationNumber" style={{width: "350px"}}/>
-                        </FormGroup>
-                        <FormGroup>
-                            <Label for="phoneNumber">Phone Number</Label>
-                            <Input type="value" name="phoneNumber" id="phoneNumber" value={item.phoneNumber || ""}
-                                onChange={this.handleChange} autoComplete="phoneNumber" style={{width: "350px"}}/>
-                        </FormGroup>
-                        <FormGroup>
-                            <Label for="client">Client name</Label>
-                            <Input type="text" name="client" id="client" value={item.client || ""}
-                                onChange={this.handleChange} autoComplete="client" style={{width: "350px"}}/>
-                        </FormGroup>
-                        <FormGroup>
-                            <Button color="primary" type="submit">
-                                Save
-                            </Button>{" "}
-                            <Button color="secondary" tag={Link} to="/cars">
-                                Cancel
-                            </Button>
-                        </FormGroup>
+                        <div className="form-row">
+                            <div className="form-group col-md-4">
+                                <FormGroup>
+                                    <Label for="model">Model</Label>
+                                    <Input type="text" name="model" id="model" value={item.model || ""}
+                                           onChange={this.handleChange} autoComplete="model" />
+                                </FormGroup>
+                            </div>
+                            <div className="form-group col-md-4">
+                                <FormGroup>
+                                    <Label for="brand">Brand</Label>
+                                    <Input type="text" name="brand" id="brand" value={item.brand || ""}
+                                           onChange={this.handleChange} autoComplete="brand-level1"/>
+                                </FormGroup>
+                            </div>
+                            <div className="form-group col-md-4">
+                                <FormGroup>
+                                    <Label for="registrationNumber">Registration Number</Label>
+                                    <Input type="text" name="registrationNumber" id="registrationNumber" value={item.registrationNumber || ""}
+                                           onChange={this.handleChange} autoComplete="registrationNumber" />
+                                </FormGroup>
+                            </div>
+                        </div>
+                        <div className="form-row">
+                            <div className="form-group col-md-2"/>
+                            <div className="form-group col-md-4">
+                                <FormGroup>
+                                    <Label for="client">Client name</Label>
+                                    <Input type="text" name="client" id="client" value={item.client || ""}
+                                           onChange={this.handleChange} autoComplete="client"/>
+                                </FormGroup>
+                            </div>
+                            <div className="form-group col-md-4">
+                                <FormGroup>
+                                    <Label for="phoneNumber">Phone Number</Label>
+                                    <Input type="value" name="phoneNumber" id="phoneNumber" value={item.phoneNumber || ""}
+                                           onChange={this.handleChange} autoComplete="phoneNumber"/>
+                                </FormGroup>
+                            </div>
+                            <div className="form-group col-md-2"/>
+                        </div>
+                        <div className="form-row">
+                            <div className="form-group col-md-5"/>
+                            <div className="form-group col-md-2">
+                                <FormGroup>
+                                    <Button color="primary" type="submit">Save</Button>
+                                    {" "}
+                                    <Button color="secondary" tag={Link} to="/cars">Cancel</Button>
+                                </FormGroup>
+                            </div>
+                            <div className="form-group col-md-5"/>
+                        </div>
                     </Form>
                 </Container>
             </div>

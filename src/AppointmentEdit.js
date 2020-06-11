@@ -106,26 +106,40 @@ class AppointmentEdit extends Component {
         <Container>
           {title}
           <Form onSubmit={this.handleSubmit}>
-            <FormGroup>
-              <Label for="nameUser">User</Label>
-              <Combobox type="text" name="nameUser" id="nameUser" data={usersList}
-                        onChange={this.usernameChange} defaultValue={ item.nameUser || "" }/>
-            </FormGroup>
-            <FormGroup>
-              <Label for="numberCar">Registration number</Label>
-              <Combobox type="text" name="numberCar" id="numberCar" data={registrationNumbersList}
-                        onChange={this.numberCarChange} defaultValue={ item.numberCar || "" } />
-            </FormGroup>
-            <FormGroup>
-              <Label for="data">Data</Label>
-              <Input type="date" name="data" id="data" value={item.data || ""}
-                onChange={this.handleChange} autoComplete="data"/>
-            </FormGroup>
-            <FormGroup>
-              <Label for="description">Description</Label>
-              <Input type="value" name="description" id="description" value={item.description || ""}
-                onChange={this.handleChange} autoComplete="description"/>
-            </FormGroup>
+            <div className="form-row">
+              <div className="form-group col-md-4">
+                <FormGroup>
+                  <Label for="nameUser">Employee</Label>
+                  <Combobox className="input" type="text" name="nameUser" id="nameUser" data={usersList}
+                            onChange={this.usernameChange} defaultValue={ item.nameUser || "" }/>
+                </FormGroup>
+              </div>
+              <div className="form-group col-md-4">
+                <FormGroup>
+                  <Label for="numberCar">Registration number</Label>
+                  <Combobox className="input" type="text" name="numberCar" id="numberCar" data={registrationNumbersList}
+                            onChange={this.numberCarChange} defaultValue={ item.numberCar || "" } />
+                </FormGroup>
+              </div>
+              <div className="form-group col-md-4">
+                <FormGroup>
+                  <Label for="data">Data</Label>
+                  <Input className="input" type="date" name="data" id="data" value={item.data || ""}
+                         onChange={this.handleChange} autoComplete="data"/>
+                </FormGroup>
+              </div>
+            </div>
+
+            <div className="form-row">
+              <div className="form-group col-md-12">
+                <FormGroup>
+                  <Label for="description">Description</Label>
+                  <Input className="input" type="value" name="description" id="description" value={item.description || ""}
+                         onChange={this.handleChange} autoComplete="description"/>
+                </FormGroup>
+              </div>
+            </div>
+
             <FormGroup>
               <Button color="primary" type="submit">
                 Save
