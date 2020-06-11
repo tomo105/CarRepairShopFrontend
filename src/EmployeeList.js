@@ -90,30 +90,45 @@ class EmployeeList extends Component {
                 return <div/>
             }
             let count = appointment.length / 4;
-
-            const items = [];
+            let allAppointments = [];
             for (let i = 0; i < count; i++) {
-                items.push(<td>{appointment[i*4]}</td>);
-                items.push(<td>{appointment[i*4+1]}</td>);
-                items.push(<td>{appointment[i*4+2]}</td>);
-                items.push(<td>{appointment[i*4+3]}</td>);
+                let sepAppointment = [];
+                sepAppointment.push("id" + i);
+                sepAppointment.push(appointment[i*4]);
+                sepAppointment.push(appointment[i*4+1]);
+                sepAppointment.push(appointment[i*4+2]);
+                sepAppointment.push(appointment[i*4+3]);
+                allAppointments.push(sepAppointment);
             }
+
+            const items = allAppointments.map(appointment => {
+                return (
+                    <tr key={appointment[0]}>
+                        <td>{appointment[1]}</td>
+                        <td>{appointment[2]}</td>
+                        <td>{appointment[3]}</td>
+                        <td>{appointment[4]}</td>
+                    </tr>
+                );
+            });
+
             return <div>
-                <thead>
-                <tr>
-                    <th width="25%">Name</th>
-                    <th width="25%">Surname</th>
-                    <th width="20%">Experience</th>
-                    <th>Experience in company</th>
-                </tr>
-                </thead>
-                {items}
+                <table>
+                    <thead>
+                        <tr>
+                            <th width="20%">Employee</th>
+                            <th width="20%">Registration number</th>
+                            <th width="20%">Appointment Date</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>{items}</tbody>
+                </table>
             </div>;
         }
 
         function AppointmentList(props) {
             let appointment = props.appointment;
-            console.log("?????", appointment);
             return <div>
                 <Popup trigger={
                         <Button color="info" className="button">
@@ -172,8 +187,8 @@ class EmployeeList extends Component {
         });
 
         const employeeList = employees.map(employee => {
-            let appointmentWeekly = "";
-            let appointmentMonthly = "";
+            let appointmentWeekly = [];
+            let appointmentMonthly = [];
             let appointmentAnnual = [];
             if (this.state.whichOne !== null && employee.setRole === this.state.whichOne) {
                 appointmentsMap(employee, appointmentWeekly, appointmentMonthly, appointmentAnnual);
