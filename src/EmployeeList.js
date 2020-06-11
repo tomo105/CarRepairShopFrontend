@@ -61,18 +61,16 @@ class EmployeeList extends Component {
                 let d = new Date(appointment.data);
                 if (appointment.nameUser === employee.surname) {
                     if (d >= dateToFormat && d <= weekStamp) {
-                        appointmentWeekly +=
-                            appointment.description + " "
-                            + appointment.data + " "
-                            + appointment.numberCar + " "
-                            + appointment.nameUser + " ";
+                        appointmentWeekly.push(appointment.nameUser);
+                        appointmentWeekly.push(appointment.numberCar);
+                        appointmentWeekly.push(appointment.data);
+                        appointmentWeekly.push(appointment.description);
                     }
                     if (d >= dateToFormat && d <= monthStamp) {
-                        appointmentMonthly +=
-                            appointment.description + " "
-                            + appointment.data + " "
-                            + appointment.numberCar + " "
-                            + appointment.nameUser + " ";
+                        appointmentMonthly.push(appointment.nameUser);
+                        appointmentMonthly.push(appointment.numberCar);
+                        appointmentMonthly.push(appointment.data);
+                        appointmentMonthly.push(appointment.description);
                     }
                     if (d >= dateToFormat && d <= yearStamp) {
                         appointmentAnnual.push(appointment.nameUser);
@@ -87,8 +85,35 @@ class EmployeeList extends Component {
         }
 
         function AppointmentDetails(props) {
-            let appointment = props.appointment;
+            let appointment = props.details;
+            if (appointment.length === 0) {
+                return <div/>
+            }
             let count = appointment.length / 4;
+
+            const items = [];
+            for (let i = 0; i < count; i++) {
+                items.push(<td>{appointment[i*4]}</td>);
+                items.push(<td>{appointment[i*4+1]}</td>);
+                items.push(<td>{appointment[i*4+2]}</td>);
+                items.push(<td>{appointment[i*4+3]}</td>);
+            }
+            return <div>
+                <thead>
+                <tr>
+                    <th width="25%">Name</th>
+                    <th width="25%">Surname</th>
+                    <th width="20%">Experience</th>
+                    <th>Experience in company</th>
+                </tr>
+                </thead>
+                {items}
+            </div>;
+        }
+
+        function AppointmentList(props) {
+            let appointment = props.appointment;
+            console.log("?????", appointment);
             return <div>
                 <Popup trigger={
                         <Button color="info" className="button">
@@ -100,7 +125,9 @@ class EmployeeList extends Component {
                             <div className="content">
                                 {" "}
                                 <h1>{props.period} Schedule</h1>
-                                <div className="textFrame">{appointment}</div>
+                                <div className="textFrame">
+                                    <AppointmentDetails details={appointment} />
+                                </div>
                             </div>
                             <div className="actions">
                                 <Button className="button" onClick={() => {
@@ -113,8 +140,8 @@ class EmployeeList extends Component {
         }
 
         const allEmployees = employees.map(employee => {
-            let appointmentWeekly = "";
-            let appointmentMonthly = "";
+            let appointmentWeekly = [];
+            let appointmentMonthly = [];
             let appointmentAnnual = [];
             const __ret = appointmentsMap(employee, appointmentWeekly, appointmentMonthly, appointmentAnnual);
             appointmentWeekly = __ret.appointmentWeekly;
@@ -128,13 +155,13 @@ class EmployeeList extends Component {
                     <td>{employee.experienceInCompany}</td>
                     <td>{employee.setRole}</td>
                     <td>
-                        <AppointmentDetails appointment={appointmentWeekly} period="Weekly"/>
+                        <AppointmentList appointment={appointmentWeekly} period="Weekly"/>
                     </td>
                     <td>
-                        <AppointmentDetails appointment={appointmentMonthly} period="Monthly"/>
+                        <AppointmentList appointment={appointmentMonthly} period="Monthly"/>
                     </td>
                     <td>
-                        <AppointmentDetails appointment={appointmentAnnual} period="Annual"/>
+                        <AppointmentList appointment={appointmentAnnual} period="Annual"/>
                     </td>
                     <td>
                         <Button size="md" color="primary" tag={Link}
@@ -158,13 +185,13 @@ class EmployeeList extends Component {
                         <td>{employee.experienceInCompany}</td>
                         <td>{employee.setRole}</td>
                         <td>
-                            <AppointmentDetails appointment={appointmentWeekly} period="Weekly"/>
+                            <AppointmentList appointment={appointmentWeekly} period="Weekly"/>
                         </td>
                         <td>
-                            <AppointmentDetails appointment={appointmentMonthly} period="Monthly"/>
+                            <AppointmentList appointment={appointmentMonthly} period="Monthly"/>
                         </td>
                         <td>
-                            <AppointmentDetails appointment={appointmentAnnual} period="Annual"/>
+                            <AppointmentList appointment={appointmentAnnual} period="Annual"/>
                         </td>
                         <td>
                             <Button size="md" color="primary" tag={Link}
