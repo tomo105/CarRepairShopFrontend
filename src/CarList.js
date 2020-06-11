@@ -124,14 +124,14 @@ class CarList extends Component {
                                                         if (currentPage > 1) {
                                                             this.setState(() =>
                                                                 ({currentPage: currentPage-1}))
-                                                        }}}>-</Button>
+                                                        }}}>&lt;</Button>
 
                                             <Button className="button"
                                                     onClick={() => {
                                                         if (currentPage < currentItemLength) {
                                                             this.setState(() =>
                                                                 ({currentPage: currentPage+1}))
-                                                        }}}>+</Button>
+                                                        }}}>&gt;</Button>
                                         </div>
                                         <Button className="button"
                                                 onClick={() => {
