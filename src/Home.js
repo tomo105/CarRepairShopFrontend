@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { Button, Container } from "reactstrap";
 import { withCookies } from "react-cookie";
+import carImg from "./assets/car-list-black.png";
+import appointmentImg from "./assets/appointments-black.png";
+import employeeImg from "./assets/employees-black.png";
+import repairImg from "./assets/repairs-black.png";
 
 import "./App.css";
 import AppNavbar from "./AppNavbar";
@@ -69,18 +73,20 @@ class Home extends Component {
 
         const manager = this.state.isManager ? (
           <div>
-            <Button href="/appointments" color="outline-primary" className="mainPageButton">
-              Appointments
-            </Button>
-            <Button href="/cars" color="outline-primary" className="mainPageButton">
-              Car list
-            </Button>
-            <Button href="/employees" color="outline-primary" className="mainPageButton">
-              Employees
-            </Button>
-            <Button href="/repairs" color="outline-primary" className="mainPageButton">
-              Repairs
-            </Button>
+              <div className="row">
+                  <div className="col-lg-3 col-md-3">
+                      <a href="/appointments"><img src={appointmentImg} /></a>
+                  </div>
+                  <div className="col-lg-3 col-md-3">
+                      <a href="/cars"><img src={carImg} /></a>
+                  </div>
+                  <div className="col-lg-3 col-md-3">
+                      <a href="/employees"><img src={employeeImg} /></a>
+                  </div>
+                  <div className="col-lg-3 col-md-3">
+                      <a href="/repairs"><img src={repairImg} /></a>
+                  </div>
+              </div>
           </div>
         ) : (
           <div/>
