@@ -69,131 +69,93 @@ class Home extends Component {
 
         const manager = this.state.isManager ? (
           <div>
-            <Button
-              href="/appointments"
-              color="outline-primary"
-              style={{
-                margin: "10px",
-                marginLeft: "0px"
-              }}>
+            <Button href="/appointments" color="outline-primary" className="mainPageButton">
               Appointments
             </Button>
-            {' '}
-
-            <Button
-              href="/cars"
-              color="outline-primary"
-              style={{
-                margin: "10px",
-              }}>
+            <Button href="/cars" color="outline-primary" className="mainPageButton">
               Car list
             </Button>
-            {' '}
-
-            <Button
-              href="/employees"
-              color="outline-primary"
-              style={{
-                margin: "10px",
-              }}>
+            <Button href="/employees" color="outline-primary" className="mainPageButton">
               Employees
             </Button>
-            {' '}
-
-            <Button
-              href="/repairs"
-              color="outline-primary"
-              style={{
-                margin: "10px",
-              }}>
+            <Button href="/repairs" color="outline-primary" className="mainPageButton">
               Repairs
             </Button>
-            {' '}
-
           </div>
         ) : (
           <div/>
         );
 
         const logistician = this.state.isLogistician ? (
-          <div>
-            <Button
-              href="/appointments"
-              color="outline-primary"
-              style={{
-                margin: "10px",
-                marginLeft: "0px"
-              }}>
-              Appointments
-            </Button>
-            <Button
-              href="/cars"
-              color="outline-primary"
-              style={{
-                margin: "10px",
-              }}>
-              Car list
-            </Button>
-          </div>
+            <div>
+                <Button href="/appointments" color="outline-primary" className="mainPageButton">
+                    Appointments
+                </Button>
+                <Button href="/cars" color="outline-primary" className="mainPageButton">
+                    Car list
+                </Button>
+                <Button href="/repairs" color="outline-primary" className="mainPageButton">
+                    Repairs
+                </Button>
+            </div>
         ) : (
-          <div />
+            <div/>
         );
 
         const mechanic = this.state.isMechanic ? (
-          <div>
-            <Button
-              href="/repairs"
-              color="outline-primary"
-              style={{
-                margin: "10px",
-                marginLeft: "0px"
-              }}>
-              Repairs
-            </Button>
-          </div>
+            <div>
+                <Button href="/appointments" color="outline-primary" className="mainPageButton">
+                    Appointments
+                </Button>
+                <Button href="/cars" color="outline-primary" className="mainPageButton">
+                    Car list
+                </Button>
+                <Button href="/repairs" color="outline-primary" className="mainPageButton">
+                    Repairs
+                </Button>
+            </div>
         ) : (
-            <div />
+            <div/>
+        );
+
+        const accountant = this.state.isAccountant ? (
+            <div>
+                <Button href="/repairs" color="outline-primary" className="mainPageButton">
+                    Repairs
+                </Button>
+            </div>
+        ) : (
+            <div/>
         );
 
         const logoutButton = (
             <div>
-                <Button
-                  color="primary"
-                  onClick={this.logout}
-                  style={{
-                    margin: "10px",
-                    marginLeft: "0px"
-                  }}>
+                <Button color="primary" onClick={this.logout} className="mainPageButton">
                     Logout
                 </Button>
             </div>
         );
 
         const loginButton = (
-            <Button
-              color="primary"
-              onClick={this.login}
-              style={{
-                margin: "10px",
-                marginLeft: "0px"
-              }}>
+            <Button color="primary" onClick={this.login} className="mainPageButton">
                 Login
             </Button>
         );
 
         return this.state.isAuthenticated ? (
           <div>
-            <AppNavbar />
-            <Container fluid>
-              {welcomeMessage}
-              {manager}
-              {logistician}
-              {mechanic}
-              {logoutButton}
-            </Container>
+                <AppNavbar />
+                <Container fluid>
+                  {welcomeMessage}
+                  {manager}
+                  {logistician}
+                  {mechanic}
+                  {accountant}
+                  {logoutButton}
+                </Container>
           </div>
         ) : (
-          <div>
+            <div>
             <AppNavbar />
             <Container fluid>
               {loginMessage}

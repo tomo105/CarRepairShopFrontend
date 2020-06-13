@@ -13,12 +13,22 @@ code {
     monospace;
 }
 
+.background {
+  padding-bottom: 700px;
+  background-color: rgba(235, 229, 192, 0.66);
+}
+
+
 .carPopup {
   font-size: 16px;
   text-align: center;
-  background: rgba(149, 246, 251, 0.81);
+  background: rgba(222, 177, 71, 0.4);
 }
 
 .input {
   margin: 5px;
+}
+
+.mainPageButton {
+  margin: 10px;
 }

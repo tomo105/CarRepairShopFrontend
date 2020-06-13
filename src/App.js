@@ -16,6 +16,7 @@ import Home from "./Home";
 class App extends Component {
     render() {
         return (
+            <div className="background">
             <Router>
                 <Switch>
                     <Route path="/" exact={true} component={Home}/>
@@ -29,6 +30,7 @@ class App extends Component {
                     <Route path="/repairs/:id" component={RepairsEdit} />
                 </Switch>
             </Router>
+            </div>
         );
     }
 }
