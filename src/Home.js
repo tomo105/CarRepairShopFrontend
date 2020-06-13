@@ -96,10 +96,10 @@ class Home extends Component {
             <div>
                 <div className="row">
                     <div className="col-lg-3 col-md-3">
-                        <a href="/appointments"><img src={appointmentImg} /></a>
+                        <a href="/cars"><img src={carImg} /></a>
                     </div>
                     <div className="col-lg-3 col-md-3">
-                        <a href="/cars"><img src={carImg} /></a>
+                        <a href="/appointments"><img src={appointmentImg} /></a>
                     </div>
                     <div className="col-lg-3 col-md-3">
                         <a href="/repairs"><img src={repairImg} /></a>
