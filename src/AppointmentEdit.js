@@ -135,7 +135,7 @@ class AppointmentEdit extends Component {
                 <FormGroup>
                   <Label for="description">Description</Label>
                   <Input className="input" type="value" name="description" id="description" value={item.description || ""}
-                         onChange={this.handleChange} autoComplete="description"/>
+                         onChange={this.handleChange} autoComplete="off"/>
                 </FormGroup>
               </div>
             </div>

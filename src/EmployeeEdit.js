@@ -76,14 +76,14 @@ class EmployeeEdit extends Component {
                                 <FormGroup>
                                     <Label for="name">Name</Label>
                                     <Input className="input" type="text" name="name" id="name" value={item.name || ""}
-                                           onChange={this.handleChange} autoComplete="name" />
+                                           onChange={this.handleChange} autoComplete="off" />
                                 </FormGroup>
                             </div>
                             <div className="form-group col-md-4">
                                 <FormGroup>
                                     <Label for="surname">Surname</Label>
                                     <Input className="input" type="text" name="surname" id="surname" value={item.surname || ""}
-                                           onChange={this.handleChange} autoComplete="surname" />
+                                           onChange={this.handleChange} autoComplete="off" />
                                 </FormGroup>
                             </div>
                             <div className="form-group col-md-4">
@@ -101,14 +101,14 @@ class EmployeeEdit extends Component {
                                 <FormGroup>
                                     <Label for="experience">Experience</Label>
                                     <Input className="input" type="value" name="experience" id="experience" value={item.experience || ""}
-                                           onChange={this.handleChange} autoComplete="experience"/>
+                                           onChange={this.handleChange} autoComplete="off"/>
                                 </FormGroup>
                             </div>
                             <div className="form-group col-md-2">
                                 <FormGroup>
                                     <Label for="experienceInCompany">Experience in company</Label>
                                     <Input className="input" type="value" name="experienceInCompany" id="experienceInCompany" value={item.experienceInCompany || ""}
-                                           onChange={this.handleChange} autoComplete="experienceInCompany"/>
+                                           onChange={this.handleChange} autoComplete="off"/>
                                 </FormGroup>
                             </div>
                             <div className="form-group col-md-4"/>
@@ -120,7 +120,7 @@ class EmployeeEdit extends Component {
                                 <FormGroup>
                                     <Label for="login">Login</Label>
                                     <Input className="input" type="text" name="login" id="login" value={item.login || ""}
-                                           onChange={this.handleChange} autoComplete="login" />
+                                           onChange={this.handleChange} autoComplete="off" />
                                 </FormGroup>
                             </div>
                             <div className="form-group col-md-4">

@@ -71,21 +71,21 @@ class GroupEdit extends Component {
                                 <FormGroup>
                                     <Label for="model">Model</Label>
                                     <Input type="text" name="model" id="model" value={item.model || ""}
-                                           onChange={this.handleChange} autoComplete="model" />
+                                           onChange={this.handleChange} autoComplete="off" />
                                 </FormGroup>
                             </div>
                             <div className="form-group col-md-4">
                                 <FormGroup>
                                     <Label for="brand">Brand</Label>
                                     <Input type="text" name="brand" id="brand" value={item.brand || ""}
-                                           onChange={this.handleChange} autoComplete="brand-level1"/>
+                                           onChange={this.handleChange} autoComplete="off"/>
                                 </FormGroup>
                             </div>
                             <div className="form-group col-md-4">
                                 <FormGroup>
                                     <Label for="registrationNumber">Registration Number</Label>
                                     <Input type="text" name="registrationNumber" id="registrationNumber" value={item.registrationNumber || ""}
-                                           onChange={this.handleChange} autoComplete="registrationNumber" />
+                                           onChange={this.handleChange} autoComplete="off" />
                                 </FormGroup>
                             </div>
                         </div>
@@ -95,14 +95,14 @@ class GroupEdit extends Component {
                                 <FormGroup>
                                     <Label for="client">Client name</Label>
                                     <Input type="text" name="client" id="client" value={item.client || ""}
-                                           onChange={this.handleChange} autoComplete="client"/>
+                                           onChange={this.handleChange} autoComplete="off"/>
                                 </FormGroup>
                             </div>
                             <div className="form-group col-md-4">
                                 <FormGroup>
                                     <Label for="phoneNumber">Phone Number</Label>
                                     <Input type="value" name="phoneNumber" id="phoneNumber" value={item.phoneNumber || ""}
-                                           onChange={this.handleChange} autoComplete="phoneNumber"/>
+                                           onChange={this.handleChange} autoComplete="off"/>
                                 </FormGroup>
                             </div>
                             <div className="form-group col-md-2"/>

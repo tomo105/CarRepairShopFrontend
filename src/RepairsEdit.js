@@ -144,7 +144,7 @@ class RepairsEdit extends Component {
                                     <Label for="sparesCosts">Spares Costs</Label>
                                     <Input className="input" type="value" name="sparesCosts" id="sparesCosts"
                                            value={item.sparesCosts || ""} onChange={this.handleChange}
-                                           autoComplete="sparesCosts"/>
+                                           autoComplete="off"/>
                                 </FormGroup>
                             </div>
                             <div className="form-group col-md-4">
@@ -152,7 +152,7 @@ class RepairsEdit extends Component {
                                     <Label for="serviceCosts">Service Costs</Label>
                                     <Input className="input" type="value" name="serviceCosts" id="serviceCosts"
                                            value={item.serviceCosts || ""} onChange={this.handleChange}
-                                           autoComplete="serviceCosts" />
+                                           autoComplete="off" />
                                 </FormGroup>
                             </div>
                             <div className="form-group col-md-2"/>
@@ -163,7 +163,7 @@ class RepairsEdit extends Component {
                                     <Label for="note">Note</Label>
                                     <Input className="input" type="text" name="note" id="note"
                                               value={item.note || ""} onChange={this.handleChange}
-                                              autoComplete="note" />
+                                              autoComplete="off" />
                                 </FormGroup>
                             </div>
                         </div>
