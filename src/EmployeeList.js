@@ -154,14 +154,28 @@ class EmployeeList extends Component {
             </div>
         }
 
-        const allEmployees = employees.map(employee => {
+        function Schedule(props) {
             let appointmentWeekly = [];
             let appointmentMonthly = [];
             let appointmentAnnual = [];
-            const __ret = appointmentsMap(employee, appointmentWeekly, appointmentMonthly, appointmentAnnual);
+            const __ret = appointmentsMap(props.employee, appointmentWeekly, appointmentMonthly, appointmentAnnual);
             appointmentWeekly = __ret.appointmentWeekly;
             appointmentMonthly = __ret.appointmentMonthly;
             appointmentAnnual = __ret.appointmentAnnual;
+            if (props.employee.setRole !== "Mechanic" && props.employee.setRole !== "Manager") {
+                return ( <div><td/><td/><td/></div> );
+            } else {
+                return (
+                    <div>
+                        <td><AppointmentList appointment={appointmentWeekly} period="Weekly"/></td>
+                        <td><AppointmentList appointment={appointmentMonthly} period="Monthly"/></td>
+                        <td><AppointmentList appointment={appointmentAnnual} period="Annual"/></td>
+                    </div>
+                );
+            }
+        }
+
+        const allEmployees = employees.map(employee => {
             return (
                 <tr key={employee.id}>
                     <td style={{ whiteSpace: "nowrap" }}>{employee.name}</td>
@@ -169,15 +183,7 @@ class EmployeeList extends Component {
                     <td>{employee.experience}</td>
                     <td>{employee.experienceInCompany}</td>
                     <td>{employee.setRole}</td>
-                    <td>
-                        <AppointmentList appointment={appointmentWeekly} period="Weekly"/>
-                    </td>
-                    <td>
-                        <AppointmentList appointment={appointmentMonthly} period="Monthly"/>
-                    </td>
-                    <td>
-                        <AppointmentList appointment={appointmentAnnual} period="Annual"/>
-                    </td>
+                    <Schedule employee={employee}/>
                     <td>
                         <Button size="md" color="primary" tag={Link}
                                 to={"/employees/" + employee.id}>Edit</Button>
@@ -199,15 +205,7 @@ class EmployeeList extends Component {
                         <td>{employee.experience}</td>
                         <td>{employee.experienceInCompany}</td>
                         <td>{employee.setRole}</td>
-                        <td>
-                            <AppointmentList appointment={appointmentWeekly} period="Weekly"/>
-                        </td>
-                        <td>
-                            <AppointmentList appointment={appointmentMonthly} period="Monthly"/>
-                        </td>
-                        <td>
-                            <AppointmentList appointment={appointmentAnnual} period="Annual"/>
-                        </td>
+                        <Schedule employee={employee}/>
                         <td>
                             <Button size="md" color="primary" tag={Link}
                                     to={"/employees/" + employee.id}>Edit</Button>
@@ -254,11 +252,12 @@ class EmployeeList extends Component {
                     <table className="mt-4 table table-hover">
                         <thead>
                         <tr>
-                            <th width="25%">Name</th>
-                            <th width="25%">Surname</th>
-                            <th width="20%">Experience</th>
-                            <th width="20%">Experience in company</th>
+                            <th width="10%">Name</th>
+                            <th width="10%">Surname</th>
+                            <th width="10%">Experience</th>
+                            <th width="10%">Experience in company</th>
                             <th width="10%">Role</th>
+                            <th width="40%">Schedule</th>
                         </tr>
                         </thead>
                         {res}
