@@ -91,6 +91,12 @@ class AppointmentEdit extends Component {
     }
 
     let usersList = [];
+    for (let i = 0; i < employees.length; i++) {
+      if (employees[i].setRole !== "Mechanic" &&
+          employees[i].setRole !== "Manager") {
+        employees.splice(i--,1);
+      }
+    }
     employees.map(employee => {
       usersList.push(employee.surname);
     });
