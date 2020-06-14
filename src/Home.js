@@ -75,16 +75,16 @@ class Home extends Component {
           <div>
               <div className="row">
                   <div className="col-lg-3 col-md-3">
-                      <a href="/cars"><img src={carImg} /></a>
+                      <a href="/cars"><img src={carImg} alt="Car List"/></a>
                   </div>
                   <div className="col-lg-3 col-md-3">
-                      <a href="/appointments"><img src={appointmentImg} /></a>
+                      <a href="/appointments"><img src={appointmentImg} alt="Appointments List"/></a>
                   </div>
                   <div className="col-lg-3 col-md-3">
-                      <a href="/repairs"><img src={repairImg} /></a>
+                      <a href="/repairs"><img src={repairImg} alt="Repairs List"/></a>
                   </div>
                   <div className="col-lg-3 col-md-3">
-                      <a href="/employees"><img src={employeeImg} /></a>
+                      <a href="/employees"><img src={employeeImg} alt="Employees List"/></a>
                   </div>
               </div>
           </div>
@@ -96,16 +96,16 @@ class Home extends Component {
             <div>
                 <div className="row">
                     <div className="col-lg-3 col-md-3">
-                        <a href="/cars"><img src={carImg} /></a>
+                        <a href="/cars"><img src={carImg} alt="Car List" /></a>
                     </div>
                     <div className="col-lg-3 col-md-3">
-                        <a href="/appointments"><img src={appointmentImg} /></a>
+                        <a href="/appointments"><img src={appointmentImg} alt="Appointments List" /></a>
                     </div>
                     <div className="col-lg-3 col-md-3">
-                        <a href="/repairs"><img src={repairImg} /></a>
+                        <a href="/repairs"><img src={repairImg} alt="Repairs List" /></a>
                     </div>
                     <div className="col-lg-3 col-md-3">
-                        <a href="/employees"><img src={employeeImg} /></a>
+                        <a href="/employees"><img src={employeeImg} alt="Employees List" /></a>
                     </div>
                 </div>
             </div>
@@ -116,16 +116,13 @@ class Home extends Component {
         const mechanic = this.state.isMechanic ? (
             <div className="row">
                 <div className="col-lg-3 col-md-3">
-                    <a href="/cars"><img src={carImg} /></a>
+                    <a href="/cars"><img src={carImg} alt="Car List" /></a>
                 </div>
                 <div className="col-lg-3 col-md-3">
-                    <a href="/appointments"><img src={appointmentImg} /></a>
+                    <a href="/repairs"><img src={repairImg} alt="Repairs List" /></a>
                 </div>
                 <div className="col-lg-3 col-md-3">
-                    <a href="/repairs"><img src={repairImg} /></a>
-                </div>
-                <div className="col-lg-3 col-md-3">
-                    <a href="/employees"><img src={employeeImg} /></a>
+                    <a href="/employees"><img src={employeeImg} alt="Employees List" /></a>
                 </div>
             </div>
         ) : (
@@ -135,10 +132,10 @@ class Home extends Component {
         const accountant = this.state.isAccountant ? (
             <div className="row">
                 <div className="col-lg-3 col-md-3">
-                    <a href="/repairs"><img src={repairImg} /></a>
+                    <a href="/repairs"><img src={repairImg} alt="Repairs List" /></a>
                 </div>
                 <div className="col-lg-3 col-md-3">
-                    <a href="/employees"><img src={employeeImg} /></a>
+                    <a href="/employees"><img src={employeeImg} alt="Employees List" /></a>
                 </div>
             </div>
         ) : (

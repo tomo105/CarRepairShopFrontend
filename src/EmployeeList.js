@@ -9,6 +9,7 @@ class EmployeeList extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            currentUser: undefined,
             whichOne: "",
             employees: [],
             appointments: [],
@@ -30,8 +31,14 @@ class EmployeeList extends Component {
         this.setState({ whichOne: "Accountant" });
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         this.setState({ isLoading: true });
+
+        const response = await fetch("/api/login", { credentials: "include" });
+        const body = await response.text();
+        if (body !== "") {
+            this.setState({ currentUser: JSON.parse(body)});
+        }
 
         fetch("api/employees")
             .then(response => response.json())
@@ -43,8 +50,9 @@ class EmployeeList extends Component {
                 this.setState({ appointments: dataAppointments })
             );
     }
+
     render() {
-        const { employees, appointments, isLoading } = this.state;
+        const { employees, appointments, isLoading, currentUser } = this.state;
 
         if (isLoading) {
             return <p>Loading...</p>;
@@ -175,6 +183,19 @@ class EmployeeList extends Component {
             }
         }
 
+        function Action(props) {
+            if ( (currentUser.id === props.employee.id) || currentUser.setRole === "Manager" ) {
+                return (
+                    <td>
+                        <Button size="md" color="primary" tag={Link}
+                                to={"/employees/" + props.employee.id}>Edit</Button>
+                    </td>
+                );
+            } else {
+                return ( <td/> );
+            }
+        }
+
         const allEmployees = employees.map(employee => {
             return (
                 <tr key={employee.id}>
@@ -184,10 +205,7 @@ class EmployeeList extends Component {
                     <td>{employee.experienceInCompany}</td>
                     <td>{employee.setRole}</td>
                     <Schedule employee={employee}/>
-                    <td>
-                        <Button size="md" color="primary" tag={Link}
-                                to={"/employees/" + employee.id}>Edit</Button>
-                    </td>
+                    <Action employee={employee}/>
                 </tr>
             );
         });
@@ -206,10 +224,7 @@ class EmployeeList extends Component {
                         <td>{employee.experienceInCompany}</td>
                         <td>{employee.setRole}</td>
                         <Schedule employee={employee}/>
-                        <td>
-                            <Button size="md" color="primary" tag={Link}
-                                    to={"/employees/" + employee.id}>Edit</Button>
-                        </td>
+                        <Action employee={employee}/>
                     </tr>
                 );
             }
@@ -226,7 +241,21 @@ class EmployeeList extends Component {
             res = <tbody>{employeeList}</tbody>;
         } else if (isRole === "Accountant") {
             res = <tbody>{employeeList}</tbody>;
-        } else res = <tbody>{allEmployees}</tbody>;
+        } else {
+            res = <tbody>{allEmployees}</tbody>;
+        }
+
+        function AddButton() {
+            if (currentUser.setRole === "Manager") {
+                return (
+                <Button color="success" tag={Link} to="/employees/new">
+                    Add Employee
+                </Button>
+                );
+            }
+            return <div></div>;
+        }
+
         return (
             <div>
                 <AppNavbar />
@@ -244,9 +273,7 @@ class EmployeeList extends Component {
                         <Button color="info" onClick={this.accountantClick.bind(this)}>
                             Search Accountants
                         </Button>
-                        <Button color="success" tag={Link} to="/employees/new">
-                            Add Employee
-                        </Button>
+                        <AddButton />
                     </div>
                     <h3>Employees</h3>
                     <table className="mt-4 table table-hover">
@@ -257,7 +284,8 @@ class EmployeeList extends Component {
                             <th width="10%">Experience</th>
                             <th width="10%">Experience in company</th>
                             <th width="10%">Role</th>
-                            <th width="40%">Schedule</th>
+                            <th width="30%">Schedule</th>
+                            <th width="20%">Action</th>
                         </tr>
                         </thead>
                         {res}

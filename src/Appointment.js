@@ -7,16 +7,21 @@ export default class Appointment extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      currentUser: undefined,
       appointments: [],
       isLoading: true
     };
     this.remove = this.remove.bind(this);
   }
 
-  componentDidMount() {
-    this.setState({
-      isLoading: true
-    });
+  async componentDidMount() {
+    this.setState({ isLoading: true });
+
+    const response = await fetch("/api/login", { credentials: "include" });
+    const body = await response.text();
+    if (body !== "") {
+      this.setState({ currentUser: JSON.parse(body)});
+    }
 
     fetch("api/appointments")
       .then(response => response.json())
@@ -42,7 +47,7 @@ export default class Appointment extends Component {
   }
 
   render() {
-    const {appointments, isLoading} = this.state;
+    const {appointments, isLoading, currentUser} = this.state;
     if (isLoading) {
       return <p>Loading...</p>;
     }
@@ -77,14 +82,23 @@ export default class Appointment extends Component {
       );
     });
 
+    function AddButton() {
+      if (currentUser.setRole === "Manager") {
+        return (
+            <Button color="success" tag={Link} to="/appointments/new">
+              Make an appointment
+            </Button>
+        );
+      }
+      return <div/>;
+    }
+
     return (
       <div>
         <AppNavbar />
         <Container fluid>
           <div className="float-right">
-            <Button color="success" tag={Link} to="/appointments/new">
-              Make an appointment
-            </Button>
+            <AddButton/>
           </div>
           <h3>Appointment panel</h3>
           <table className="mt-4 table table-hover">
@@ -93,7 +107,6 @@ export default class Appointment extends Component {
               <th width="17.5%">User</th>
               <th width="20%"> Registration number</th>
               <th>Data</th>
-
               <th width="20%">Description</th>
               <th width="20%">Actions</th>
             </tr>
