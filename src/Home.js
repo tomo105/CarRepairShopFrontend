@@ -102,9 +102,6 @@ class Home extends Component {
                         <a href="/appointments"><img src={appointmentImg} alt="Appointments List" /></a>
                     </div>
                     <div className="col-lg-3 col-md-3">
-                        <a href="/repairs"><img src={repairImg} alt="Repairs List" /></a>
-                    </div>
-                    <div className="col-lg-3 col-md-3">
                         <a href="/employees"><img src={employeeImg} alt="Employees List" /></a>
                     </div>
                 </div>
