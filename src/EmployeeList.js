@@ -9,6 +9,7 @@ class EmployeeList extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            currentUser: undefined,
             whichOne: "",
             employees: [],
             appointments: [],
@@ -30,8 +31,14 @@ class EmployeeList extends Component {
         this.setState({ whichOne: "Accountant" });
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         this.setState({ isLoading: true });
+
+        const response = await fetch("/api/login", { credentials: "include" });
+        const body = await response.text();
+        if (body !== "") {
+            this.setState({ currentUser: JSON.parse(body)});
+        }
 
         fetch("api/employees")
             .then(response => response.json())
@@ -43,8 +50,9 @@ class EmployeeList extends Component {
                 this.setState({ appointments: dataAppointments })
             );
     }
+
     render() {
-        const { employees, appointments, isLoading } = this.state;
+        const { employees, appointments, isLoading, currentUser } = this.state;
 
         if (isLoading) {
             return <p>Loading...</p>;
@@ -154,14 +162,41 @@ class EmployeeList extends Component {
             </div>
         }
 
-        const allEmployees = employees.map(employee => {
+        function Schedule(props) {
             let appointmentWeekly = [];
             let appointmentMonthly = [];
             let appointmentAnnual = [];
-            const __ret = appointmentsMap(employee, appointmentWeekly, appointmentMonthly, appointmentAnnual);
+            const __ret = appointmentsMap(props.employee, appointmentWeekly, appointmentMonthly, appointmentAnnual);
             appointmentWeekly = __ret.appointmentWeekly;
             appointmentMonthly = __ret.appointmentMonthly;
             appointmentAnnual = __ret.appointmentAnnual;
+            if (props.employee.setRole !== "Mechanic" && props.employee.setRole !== "Manager") {
+                return ( <div><td/><td/><td/></div> );
+            } else {
+                return (
+                    <div>
+                        <td><AppointmentList appointment={appointmentWeekly} period="Weekly"/></td>
+                        <td><AppointmentList appointment={appointmentMonthly} period="Monthly"/></td>
+                        <td><AppointmentList appointment={appointmentAnnual} period="Annual"/></td>
+                    </div>
+                );
+            }
+        }
+
+        function Action(props) {
+            if ( (currentUser.id === props.employee.id) || currentUser.setRole === "Manager" ) {
+                return (
+                    <td>
+                        <Button size="md" color="primary" tag={Link}
+                                to={"/employees/" + props.employee.id}>Edit</Button>
+                    </td>
+                );
+            } else {
+                return ( <td/> );
+            }
+        }
+
+        const allEmployees = employees.map(employee => {
             return (
                 <tr key={employee.id}>
                     <td style={{ whiteSpace: "nowrap" }}>{employee.name}</td>
@@ -169,19 +204,8 @@ class EmployeeList extends Component {
                     <td>{employee.experience}</td>
                     <td>{employee.experienceInCompany}</td>
                     <td>{employee.setRole}</td>
-                    <td>
-                        <AppointmentList appointment={appointmentWeekly} period="Weekly"/>
-                    </td>
-                    <td>
-                        <AppointmentList appointment={appointmentMonthly} period="Monthly"/>
-                    </td>
-                    <td>
-                        <AppointmentList appointment={appointmentAnnual} period="Annual"/>
-                    </td>
-                    <td>
-                        <Button size="md" color="primary" tag={Link}
-                                to={"/employees/" + employee.id}>Edit</Button>
-                    </td>
+                    <Schedule employee={employee}/>
+                    <Action employee={employee}/>
                 </tr>
             );
         });
@@ -199,19 +223,8 @@ class EmployeeList extends Component {
                         <td>{employee.experience}</td>
                         <td>{employee.experienceInCompany}</td>
                         <td>{employee.setRole}</td>
-                        <td>
-                            <AppointmentList appointment={appointmentWeekly} period="Weekly"/>
-                        </td>
-                        <td>
-                            <AppointmentList appointment={appointmentMonthly} period="Monthly"/>
-                        </td>
-                        <td>
-                            <AppointmentList appointment={appointmentAnnual} period="Annual"/>
-                        </td>
-                        <td>
-                            <Button size="md" color="primary" tag={Link}
-                                    to={"/employees/" + employee.id}>Edit</Button>
-                        </td>
+                        <Schedule employee={employee}/>
+                        <Action employee={employee}/>
                     </tr>
                 );
             }
@@ -228,7 +241,21 @@ class EmployeeList extends Component {
             res = <tbody>{employeeList}</tbody>;
         } else if (isRole === "Accountant") {
             res = <tbody>{employeeList}</tbody>;
-        } else res = <tbody>{allEmployees}</tbody>;
+        } else {
+            res = <tbody>{allEmployees}</tbody>;
+        }
+
+        function AddButton() {
+            if (currentUser.setRole === "Manager") {
+                return (
+                <Button color="success" tag={Link} to="/employees/new">
+                    Add Employee
+                </Button>
+                );
+            }
+            return <div></div>;
+        }
+
         return (
             <div>
                 <AppNavbar />
@@ -246,19 +273,19 @@ class EmployeeList extends Component {
                         <Button color="info" onClick={this.accountantClick.bind(this)}>
                             Search Accountants
                         </Button>
-                        <Button color="success" tag={Link} to="/employees/new">
-                            Add Employee
-                        </Button>
+                        <AddButton />
                     </div>
                     <h3>Employees</h3>
                     <table className="mt-4 table table-hover">
                         <thead>
                         <tr>
-                            <th width="25%">Name</th>
-                            <th width="25%">Surname</th>
-                            <th width="20%">Experience</th>
-                            <th width="20%">Experience in company</th>
+                            <th width="10%">Name</th>
+                            <th width="10%">Surname</th>
+                            <th width="10%">Experience</th>
+                            <th width="10%">Experience in company</th>
                             <th width="10%">Role</th>
+                            <th width="30%">Schedule</th>
+                            <th width="20%">Action</th>
                         </tr>
                         </thead>
                         {res}

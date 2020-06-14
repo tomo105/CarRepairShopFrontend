@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { Button, Container } from "reactstrap";
 import { withCookies } from "react-cookie";
+import carImg from "./assets/car-list-black.png";
+import appointmentImg from "./assets/appointments-black.png";
+import employeeImg from "./assets/employees-black.png";
+import repairImg from "./assets/repairs-black.png";
 
 import "./App.css";
 import AppNavbar from "./AppNavbar";
@@ -69,131 +73,100 @@ class Home extends Component {
 
         const manager = this.state.isManager ? (
           <div>
-            <Button
-              href="/appointments"
-              color="outline-primary"
-              style={{
-                margin: "10px",
-                marginLeft: "0px"
-              }}>
-              Appointments
-            </Button>
-            {' '}
-
-            <Button
-              href="/cars"
-              color="outline-primary"
-              style={{
-                margin: "10px",
-              }}>
-              Car list
-            </Button>
-            {' '}
-
-            <Button
-              href="/employees"
-              color="outline-primary"
-              style={{
-                margin: "10px",
-              }}>
-              Employees
-            </Button>
-            {' '}
-
-            <Button
-              href="/repairs"
-              color="outline-primary"
-              style={{
-                margin: "10px",
-              }}>
-              Repairs
-            </Button>
-            {' '}
-
+              <div className="row">
+                  <div className="col-lg-3 col-md-3">
+                      <a href="/cars"><img src={carImg} alt="Car List"/></a>
+                  </div>
+                  <div className="col-lg-3 col-md-3">
+                      <a href="/appointments"><img src={appointmentImg} alt="Appointments List"/></a>
+                  </div>
+                  <div className="col-lg-3 col-md-3">
+                      <a href="/repairs"><img src={repairImg} alt="Repairs List"/></a>
+                  </div>
+                  <div className="col-lg-3 col-md-3">
+                      <a href="/employees"><img src={employeeImg} alt="Employees List"/></a>
+                  </div>
+              </div>
           </div>
         ) : (
           <div/>
         );
 
         const logistician = this.state.isLogistician ? (
-          <div>
-            <Button
-              href="/appointments"
-              color="outline-primary"
-              style={{
-                margin: "10px",
-                marginLeft: "0px"
-              }}>
-              Appointments
-            </Button>
-            <Button
-              href="/cars"
-              color="outline-primary"
-              style={{
-                margin: "10px",
-              }}>
-              Car list
-            </Button>
-          </div>
+            <div>
+                <div className="row">
+                    <div className="col-lg-3 col-md-3">
+                        <a href="/cars"><img src={carImg} alt="Car List" /></a>
+                    </div>
+                    <div className="col-lg-3 col-md-3">
+                        <a href="/appointments"><img src={appointmentImg} alt="Appointments List" /></a>
+                    </div>
+                    <div className="col-lg-3 col-md-3">
+                        <a href="/employees"><img src={employeeImg} alt="Employees List" /></a>
+                    </div>
+                </div>
+            </div>
         ) : (
-          <div />
+            <div/>
         );
 
         const mechanic = this.state.isMechanic ? (
-          <div>
-            <Button
-              href="/repairs"
-              color="outline-primary"
-              style={{
-                margin: "10px",
-                marginLeft: "0px"
-              }}>
-              Repairs
-            </Button>
-          </div>
+            <div className="row">
+                <div className="col-lg-3 col-md-3">
+                    <a href="/cars"><img src={carImg} alt="Car List" /></a>
+                </div>
+                <div className="col-lg-3 col-md-3">
+                    <a href="/repairs"><img src={repairImg} alt="Repairs List" /></a>
+                </div>
+                <div className="col-lg-3 col-md-3">
+                    <a href="/employees"><img src={employeeImg} alt="Employees List" /></a>
+                </div>
+            </div>
         ) : (
-            <div />
+            <div/>
+        );
+
+        const accountant = this.state.isAccountant ? (
+            <div className="row">
+                <div className="col-lg-3 col-md-3">
+                    <a href="/repairs"><img src={repairImg} alt="Repairs List" /></a>
+                </div>
+                <div className="col-lg-3 col-md-3">
+                    <a href="/employees"><img src={employeeImg} alt="Employees List" /></a>
+                </div>
+            </div>
+        ) : (
+            <div/>
         );
 
         const logoutButton = (
             <div>
-                <Button
-                  color="primary"
-                  onClick={this.logout}
-                  style={{
-                    margin: "10px",
-                    marginLeft: "0px"
-                  }}>
+                <Button color="primary" onClick={this.logout} className="mainPageButton">
                     Logout
                 </Button>
             </div>
         );
 
         const loginButton = (
-            <Button
-              color="primary"
-              onClick={this.login}
-              style={{
-                margin: "10px",
-                marginLeft: "0px"
-              }}>
+            <Button color="primary" onClick={this.login} className="mainPageButton">
                 Login
             </Button>
         );
 
         return this.state.isAuthenticated ? (
           <div>
-            <AppNavbar />
-            <Container fluid>
-              {welcomeMessage}
-              {manager}
-              {logistician}
-              {mechanic}
-              {logoutButton}
-            </Container>
+                <AppNavbar />
+                <Container fluid>
+                  {welcomeMessage}
+                  {manager}
+                  {logistician}
+                  {mechanic}
+                  {accountant}
+                  {logoutButton}
+                </Container>
           </div>
         ) : (
-          <div>
+            <div>
             <AppNavbar />
             <Container fluid>
               {loginMessage}
