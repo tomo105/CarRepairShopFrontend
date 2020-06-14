@@ -83,7 +83,7 @@ export default class Appointment extends Component {
     });
 
     function AddButton() {
-      if (currentUser.setRole === "Manager") {
+      if (currentUser.setRole === "Manager" || currentUser.setRole === "Logistician") {
         return (
             <Button color="success" tag={Link} to="/appointments/new">
               Make an appointment
